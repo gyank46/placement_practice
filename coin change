@@ -1,0 +1,33 @@
+#include<iostream>
+#include<algorithm>
+
+
+using namespace std;
+
+
+long long util(n)
+    {
+        if(n==0)
+            return 0;
+        if(n<0)
+            return INT_MAX;
+        else
+        {
+            return min(util(n-3),util(n-5),util(n-10))+1;
+        }
+    }
+int coinChange(int amount) 
+{
+    long long res=util(amount);
+    if(res>INT_MAX)
+      	return -1;
+    return res;
+}
+
+
+int main()
+{
+	int n;
+	cin>>n;
+	cout<<coinChange(n)<<endl;
+}
